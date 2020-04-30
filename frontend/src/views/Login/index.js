@@ -4,12 +4,24 @@ import FormGroup from "../../components/FormGroup";
 import { withRouter } from "react-router-dom";
 import { AuthContext } from "../../main/provedorAutenticacao";
 import axios from "axios";
+import { Button, notification } from "antd";
 
 class Login extends React.Component {
   state = {
     email: "",
     password: "",
     messageError: null,
+    errorMessage: "",
+  };
+
+  openNotification = () => {
+    let placement = "bottomRight";
+    notification.open({
+      message: "Erro de acesso",
+      description: "Senha e/ou email inválido(s)",
+
+      placement,
+    });
   };
 
   entrar = async () => {
@@ -20,10 +32,11 @@ class Login extends React.Component {
       })
       .then((response) => {
         this.context.iniciarSessao(response.data);
-        this.props.history.push("/home");
+        this.props.history.push("/barragens");
       })
       .catch((erro) => {
-        console.log(erro.response);
+        this.openNotification();
+        this.setState({ errorMessage: erro.response.data });
       });
   };
 
@@ -34,10 +47,10 @@ class Login extends React.Component {
   render() {
     return (
       <>
-        <div className="row">
+        <div className="row" style={{ justifyContent: "center" }}>
           <div
             className="col-md-6"
-            style={{ position: "relative", left: "300px" }}
+            style={{ position: "relative", bottom: "15px" }}
           >
             <div className="bs-docs-section">
               <Card title="Login">
@@ -76,18 +89,34 @@ class Login extends React.Component {
                             placeholder="Password"
                           />
                         </FormGroup>
-                        <button
+                        <div
+                          className="row"
+                          style={{ justifyContent: "center" }}
+                        >
+                          <div className="col-lg-6">
+                            <Button
+                              type="primary"
+                              style={{ width: "100%" }}
+                              onClick={() => this.entrar()}
+                            >
+                              Entrar
+                            </Button>
+                          </div>
+                        </div>
+
+                        {/* <button
+                          style={{ marginRight: "5px" }}
                           onClick={() => this.entrar()}
                           className="btn btn-success"
                         >
                           Entrar
-                        </button>
-                        <button
+                        </button> */}
+                        {/* <button
                           onClick={() => this.cadastrar()}
                           className="btn btn-danger"
                         >
                           Cadastrar
-                        </button>
+                        </button> */}
                       </fieldset>
                     </div>
                   </div>

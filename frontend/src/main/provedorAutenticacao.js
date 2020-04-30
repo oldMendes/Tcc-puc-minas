@@ -10,10 +10,17 @@ class ProvedorAutenticao extends React.Component {
     isAutenticado: false,
   };
 
+  componentDidMount() {
+    let user = localStorage.getItem("_usuario_logado");
+    let usuario = JSON.parse(user);
+    if (usuario !== null) this.iniciarSessao(usuario);
+  }
+
   iniciarSessao = (usuario) => {
-    alert("aqui");
+    // console.log(usuario);
     AuthService.logar(usuario);
     this.setState({ isAutenticado: true, usuarioAutenticado: usuario });
+    // console.log(this.state);
   };
 
   encerrarSessao = () => {

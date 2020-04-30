@@ -4,7 +4,6 @@ import Routes from "./routes";
 import "../custom.css";
 import NavBar from "../components/NavBar";
 import ProvedorAutenticao from "./provedorAutenticacao";
-
 export const App = () => {
   return (
     <>

@@ -17,6 +17,7 @@ export default class AuthService {
   }
 
   static logar(usuario) {
+    console.log("teste", usuario);
     LocalStorageService.adicionarItem(USUARIO_LOGADO, usuario);
   }
 
