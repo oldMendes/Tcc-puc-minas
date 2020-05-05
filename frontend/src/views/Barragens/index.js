@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../../components/Card";
 import ModalGeneric from "../../components/ModalGeneric";
-import { Button, InputNumber } from "antd";
+import { Button } from "antd";
 import BarragensTable from "./BarragensTable";
 import axios from "axios";
 import FormGroup from "../../components/FormGroup";
@@ -105,7 +105,7 @@ class Barragens extends React.Component {
     });
   };
 
-  handleOk = (e) => {
+  handleOk = (_e) => {
     if (this.state.title === "Cadastrar barragem") {
       axios
         .post("http://localhost:8090/saveDam", {
@@ -148,7 +148,6 @@ class Barragens extends React.Component {
   };
 
   handleCancel = (e) => {
-    console.log(e);
     this.setState({
       visible: false,
     });

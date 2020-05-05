@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, HashRouter, Redirect } from "react-router-dom";
 import Login from "../views/Login";
-import CadastroUsuario from "../views/CadastroUsuario";
 import { AuthConsumer } from "../main/provedorAutenticacao";
 import Usuarios from "../views/Usuarios";
 import Barragens from "../views/Barragens";
 import Ativos from "../views/Ativos";
 import DetalhesBarragem from "../views/DetalhesBarragem";
 import DetalhesAtivo from "../views/DetalhesAtivo";
+import Monitoramento from "../views/Monitoramento";
 
 const RotaAutenticada = ({
   component: Component,
@@ -45,12 +45,7 @@ const Router = (props) => {
     <HashRouter>
       <Switch>
         <Route path="/login" component={Login} exact />
-        {/* <Route path="/ativos" component={Ativos} /> */}
-        {/* <Route path="/listUsuarios" component={Usuarios} />
-        <Route path="/barragens" component={Barragens} />
-        <Route path="/cadastrar-usuario" component={CadastroUsuario} /> */}
-        {/* <Route path="/detalhes-barragem/:id?" component={DetalhesBarragem} />
-        <Route path="/detalhes-ativo/:id?" component={DetalhesAtivo} /> */}
+        <Route path="/" component={Login} exact />
         <RotaAutenticada
           isUsuarioAutenticado={props.isUsuarioAutenticado}
           path="/barragens"
@@ -75,6 +70,11 @@ const Router = (props) => {
           isUsuarioAutenticado={props.isUsuarioAutenticado}
           path="/detalhes-ativo/:id?"
           component={DetalhesAtivo}
+        />
+        <RotaAutenticada
+          isUsuarioAutenticado={props.isUsuarioAutenticado}
+          path="/monitoramento"
+          component={Monitoramento}
         />
       </Switch>
     </HashRouter>

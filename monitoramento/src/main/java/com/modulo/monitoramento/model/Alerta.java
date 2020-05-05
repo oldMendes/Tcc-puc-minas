@@ -20,5 +20,6 @@ public class Alerta {
     private String sensorName;
     private CriticalLevel criticalLevel;
     private String notification;
+    private Integer damId;
 
 }

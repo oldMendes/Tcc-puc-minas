@@ -20,6 +20,7 @@ public class QueueProducer {
 
     @GetMapping("/send")
     public String sendToQueue(@RequestParam(value = "message", defaultValue = "CodeCouple.pl") String message){
+        message = "{\"id\" : 4}";
         queueSender.convertAndSend(queueName, message);
         return String.format("Message %s sent! See logs...", message);
     }

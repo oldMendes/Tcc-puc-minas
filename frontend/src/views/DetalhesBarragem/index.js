@@ -1,11 +1,9 @@
 import React from "react";
 import Card from "../../components/Card";
 import axios from "axios";
-import { Descriptions, Tag, Button, Alert } from "antd";
+import { Descriptions, Button, Alert } from "antd";
 import { MailOutlined } from "@ant-design/icons";
-import ListaAtivos from "./ListaAtivos";
 import ListaAfetados from "./ListaAfetados";
-import ListaMonitoramento from "./ListaMonitoramento";
 
 const type = (tipo) => {
   switch (tipo) {
@@ -45,19 +43,6 @@ const potentialDamDamage = (tipo) => {
   }
 };
 
-const statusDamFormat = (tipo) => {
-  switch (tipo) {
-    case 0:
-      return "Estável";
-    case 1:
-      return "Alerta";
-    case 2:
-      return "Crítico";
-    default:
-      break;
-  }
-};
-
 const potentialDamDamageFormat = (tipo) => {
   switch (tipo) {
     case 0:
@@ -66,19 +51,6 @@ const potentialDamDamageFormat = (tipo) => {
       return "Médio";
     case 2:
       return "Alto";
-    default:
-      break;
-  }
-};
-
-const colorStyle = (status) => {
-  switch (status) {
-    case 0:
-      return "success";
-    case 1:
-      return "warning";
-    case 2:
-      return "error";
     default:
       break;
   }
@@ -99,12 +71,14 @@ class DetalhesBarragem extends React.Component {
     actives: [],
     affecteds: [],
     alert: [],
+    damId: "",
   };
 
   componentDidMount() {
     const params = this.props.match.params.id;
-    this.listarAlertas();
+    this.setState({ damId: this.props.match.params.id });
     this.listarBarragens(params);
+    // this.listarAlertas();
   }
   listarBarragens(params) {
     axios
@@ -136,7 +110,6 @@ class DetalhesBarragem extends React.Component {
         this.setState({
           alert: reponse.data,
         });
-        console.log(this.state);
       })
       .catch((erro) => {
         alert(erro);
@@ -206,13 +179,11 @@ class DetalhesBarragem extends React.Component {
           </div>
         </Card>
         <br />
-        {this.state?.alert.length > 0 && (
-          <ListaMonitoramento data={this.state?.alert} />
-        )}
-        <br />
-        {this.state?.affecteds.length > 0 && (
-          <ListaAfetados data={this.state?.affecteds} />
-        )}
+        <ListaAfetados
+          data={this.state.affecteds}
+          damId={this.state.damId}
+          listDams={() => this.listarBarragens(this.state.damId)}
+        />
       </>
     );
   }

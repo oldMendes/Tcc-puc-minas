@@ -36,7 +36,7 @@ export const ManutencaoTable = ({ data, editar, deletar }) => {
         <td>{moment(row.maintenanceEndDate).format("L")}</td>
         <td>{row.maintenanceDescription}</td>
         <td>{statusManutencao(row.maintenanceStatus)}</td>
-        <td>
+        {/* <td>
           <div style={{ display: "flex", flexDirection: "row", color: "blue" }}>
             <Tooltip title="Editar">
               <EditOutlined
@@ -51,7 +51,7 @@ export const ManutencaoTable = ({ data, editar, deletar }) => {
               />
             </Tooltip>
           </div>
-        </td>
+        </td> */}
       </tr>
     );
   });
@@ -65,7 +65,7 @@ export const ManutencaoTable = ({ data, editar, deletar }) => {
           <th scope="col"> Data final </th>
           <th scope="col"> Descrição </th>
           <th scope="col"> Status </th>
-          <th scope="col"> Ações </th>
+          {/* <th scope="col"> Ações </th> */}
         </tr>
       </thead>
       <tbody>{rows}</tbody>

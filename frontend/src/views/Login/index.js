@@ -19,7 +19,6 @@ class Login extends React.Component {
     notification.open({
       message: "Erro de acesso",
       description: "Senha e/ou email inválido(s)",
-
       placement,
     });
   };
@@ -103,20 +102,6 @@ class Login extends React.Component {
                             </Button>
                           </div>
                         </div>
-
-                        {/* <button
-                          style={{ marginRight: "5px" }}
-                          onClick={() => this.entrar()}
-                          className="btn btn-success"
-                        >
-                          Entrar
-                        </button> */}
-                        {/* <button
-                          onClick={() => this.cadastrar()}
-                          className="btn btn-danger"
-                        >
-                          Cadastrar
-                        </button> */}
                       </fieldset>
                     </div>
                   </div>

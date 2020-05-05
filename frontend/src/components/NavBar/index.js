@@ -37,6 +37,7 @@ const NavBar = (props) => {
             alt="Smiley face"
             width="50"
             height="50"
+            style={{ marginRight: "20px" }}
           />
           {props.isUsuarioAutenticado && (
             <Dropdown overlay={menu} placement="bottomLeft">
@@ -69,6 +70,11 @@ const NavBar = (props) => {
                 render={props.isUsuarioAutenticado}
                 href="#/listUsuarios"
                 label="Usuários"
+              />
+              <NavbarItem
+                render={props.isUsuarioAutenticado}
+                href="#/monitoramento"
+                label="Monitoramento"
               />
               <NavbarItem
                 render={props.isUsuarioAutenticado}

@@ -3,7 +3,7 @@ import Card from "../../../components/Card";
 import ManutencaoTable from "../ManutencaoTable";
 import ModalGeneric from "../../../components/ModalGeneric";
 import FormGroup from "../../../components/FormGroup";
-import { Button, InputNumber } from "antd";
+import { Button, InputNumber, DatePicker } from "antd";
 import axios from "axios";
 import {
   STATUS_MANUTENCAO,
@@ -12,8 +12,6 @@ import {
 import SelectMenu from "../../../components/SelectMenu";
 import { PlusOutlined } from "@ant-design/icons";
 import moment from "moment";
-import { DatePicker } from "antd";
-const { RangePicker } = DatePicker;
 
 const tipoManutencao = (tipo) => {
   switch (tipo) {
@@ -50,7 +48,6 @@ class ListaManutencao extends React.Component {
     maintenanceDescription: "",
     maintenanceStatus: "",
     typeMaintenance: "",
-    teste: "",
   };
 
   onChange(date) {
@@ -82,8 +79,6 @@ class ListaManutencao extends React.Component {
   };
 
   handleOk = (_e) => {
-    console.log(this.state);
-    this.props.update();
     if (this.state.title === "Cadastrar manutenção") {
       axios
         .post(`http://localhost:8090/saveMaintenance/${this.props.params}`, {
@@ -188,7 +183,7 @@ class ListaManutencao extends React.Component {
   render() {
     return (
       <>
-        <div className="row" style={{ marginBottom: "15px" }}>
+        {/* <div className="row" style={{ marginBottom: "15px" }}>
           <div className="col-md-12">
             <Button
               type="primary"
@@ -200,7 +195,7 @@ class ListaManutencao extends React.Component {
               Cadastrar manutenção
             </Button>
           </div>
-        </div>
+        </div> */}
         <Card>
           <h4 style={{ fontWeight: "bold" }}>Lista de manutenções</h4>
           <br />
@@ -275,7 +270,6 @@ class ListaManutencao extends React.Component {
                         this.setState({ maintenanceStartDate: e.target.value })
                       }
                     ></input>
-                    {console.log(this.state?.maintenanceStartDate)}
                     {/* <DatePicker
                       onChange={this.onChange}
                       defaultValue={this.state.maintenanceStartDate}

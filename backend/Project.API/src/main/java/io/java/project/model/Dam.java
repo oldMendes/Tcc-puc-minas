@@ -29,6 +29,6 @@ public class Dam {
 //    @OneToMany
 //    private List<Active> actives;
 
-    @OneToMany(mappedBy="dam", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="dam", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Affected> affecteds;
 }

@@ -28,7 +28,7 @@ const colorStyle = (status) => {
 };
 
 export const MonitoramentoTable = ({ data }) => {
-  const rows = data.map((row, index) => {
+  const rows = data.reverse().map((row, index) => {
     return (
       <tr key={index}>
         <td>{row.sensorName}</td>
