@@ -31,6 +31,7 @@ export const MonitoramentoTable = ({ data }) => {
   const rows = data.reverse().map((row, index) => {
     return (
       <tr key={index}>
+        {row.damId === 4 && <td>Brumadinho</td>}
         <td>{row.sensorName}</td>
         <td>{row.notification}</td>
         <td>
@@ -46,6 +47,7 @@ export const MonitoramentoTable = ({ data }) => {
     <table className="table table-houver">
       <thead>
         <tr>
+          <th scope="col"> Código da barragem </th>
           <th scope="col"> Sensor </th>
           <th scope="col"> Notificação </th>
           <th scope="col"> Status </th>

@@ -39,10 +39,7 @@ public class EmailSender {
             );
             message.setSubject("Sistema de gestão de baragens");
             message.setText(String.format(
-                    "Alerta de nível de barragem:\nBarragem: %s\nSensor: %s\nNivel: %s\nNotificacao: %s",
-                    parameters.get("damId"),
-                    parameters.get("sensorName"),
-                    parameters.get("criticalLevel"),
+                    "Alerta de nível de barragem:\nFavor evacuar do local!\nNotificacao: %s",
                     parameters.get("notification")
             ));
             Transport.send(message);
